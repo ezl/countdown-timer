@@ -1,56 +1,56 @@
 body {
-	padding: 20px;
-	background-color: #333;
-	font-family: arial, sans-serif;
+    padding: 20px;
+    background-color: #333;
+    font-family: arial, sans-serif;
 }
 
 body.red {
-	background-color: #f44a41;
+    background-color: #f44a41;
 }
 
 body.yellow {
-	background-color: #f2cf32;
+    background-color: #f2cf32;
 }
 
 #countdown {
-	font-size: 120px;
-	text-align: center;
-	padding: 30px;
-	margin-top: 50px;
-	color: #fff;
+    font-size: 120px;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    color: #fff;
 }
 
 #buttons {
-	text-align: center;
+    text-align: center;
 }
 
 .btn {
-	width: 200px;
-	padding: 5px 20px;
-	font-size: 24px;
-	text-align: center;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	-khtml-border-radius: 3px;
-	border-radius: 3px;
-	border: 2px solid #fff;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	cursor: pointer;
-	text-decoration: none;
-	margin: 5px;
-	color: #fff;
+    width: 200px;
+    padding: 5px 20px;
+    font-size: 24px;
+    text-align: center;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+    border: 2px solid #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 5px;
+    color: #fff;
 }
 .btn.green {
-	background: #40d14b;
+    background: #40d14b;
 }
 .btn.red {
-	background: #f44a41;
+    background: #f44a41;
 }
 
 .btn.blue {
-	background: #2b9aef;
+    background: #2b9aef;
 }
 .btn.grey {
-	background: #333;
+    background: #333;
 }
