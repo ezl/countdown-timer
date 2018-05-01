@@ -5,7 +5,11 @@ body {
 }
 
 body.red {
-	background-color: red;
+	background-color: #f44a41;
+}
+
+body.yellow {
+	background-color: #f2cf32;
 }
 
 #countdown {
@@ -25,33 +29,28 @@ body.red {
 	padding: 5px 20px;
 	font-size: 24px;
 	text-align: center;
-	text-shadow: -1px -1px #333;
-	-moz-border-radius: 6px;
-	-webkit-border-radius: 6px;
-	-khtml-border-radius: 6px;
-	border-radius: 6px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	border-radius: 3px;
 	border: 2px solid #fff;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	-moz-box-shadow: 0px 0px 2px #000;
-	-webkit-box-shadow: 0px 0px 2px #000;
-	-khtml-box-shadow: 0px 0px 2px #000;
-	box-shadow: 0px 0px 2px #000;
 	cursor: pointer;
 	text-decoration: none;
 	margin: 5px;
 	color: #fff;
 }
-.btn.start {
-	background: green;
+.btn.green {
+	background: #40d14b;
 }
-.btn.stop {
-	background: red;
+.btn.red {
+	background: #f44a41;
 }
 
-.btn.time {
-	background: blue;
+.btn.blue {
+	background: #2b9aef;
 }
-.btn.clear {
+.btn.grey {
 	background: #333;
 }

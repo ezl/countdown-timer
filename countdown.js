@@ -2,7 +2,7 @@
 (function() {
 
 var t,
-	timer_is_on = false,
+	timerIsOn = false,
 	seconds = 60;
 
 function addSecond() {
@@ -40,10 +40,25 @@ function updateTimerDisplay() {
 }
 
 function setBackgroundColor() {
-	if (seconds < 0) {
-		$('body').addClass('red');
-	} else {
+	console.log(seconds);
+	if (seconds > 15) {
 		$('body').removeClass('red');
+		$('body').removeClass('yellow');
+	} else if ((0 < seconds) && (seconds <= 15)) {
+		$('body').removeClass('red');
+		$('body').addClass('yellow');
+	} else if (seconds === 0) {
+		if (timerIsOn === true) {
+			$('body').removeClass('yellow');
+			$('body').addClass('red');
+		} else {
+			$('body').removeClass('red');
+			$('body').removeClass('yellow');
+		}
+	} else {
+		// seconds < 0
+		$('body').removeClass('yellow');
+		$('body').addClass('red');
 	}
 }
 
@@ -58,18 +73,19 @@ function timedCount() {
 
 function doTimer() {
 	clearTimeout(t);
-	if (!timer_is_on) {
+	if (!timerIsOn) {
 		$('#btn-start').html('Stop');
-		$('#btn-start').removeClass('start');
-		$('#btn-start').addClass('stop');
-		timer_is_on = true;
+		$('#btn-start').removeClass('green');
+		$('#btn-start').addClass('red');
+		timerIsOn = true;
 		timedCount();
 	} else {
 		$('#btn-start').html('Start');
-		$('#btn-start').removeClass('stop');
-		$('#btn-start').addClass('start');
-		timer_is_on = false;
+		$('#btn-start').removeClass('red');
+		$('#btn-start').addClass('green');
+		timerIsOn = false;
 	}
+	setBackgroundColor();
 }
 
 $(document).ready(function() {
