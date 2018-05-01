@@ -1,9 +1,44 @@
 /*global $, document, setTimeout, clearTimeout */
 (function() {
 
+
+/* init */
+
 var t,
     timerIsOn = false,
     seconds = 60;
+
+/* make the clock actually count down */
+
+function tick() {
+    seconds = seconds - 1;
+    updateTimerDisplay();
+    t = setTimeout(function() { tick(); }, 1000);
+}
+
+/* start, stop, clear, add time */
+
+function startTimer() {
+    $('#btn-start').html('Stop');
+    $('#btn-start').removeClass('green');
+    $('#btn-start').addClass('red');
+    timerIsOn = true;
+    tick();
+}
+
+function stopTimer() {
+    clearTimeout(t);
+    $('#btn-start').html('Start');
+    $('#btn-start').removeClass('red');
+    $('#btn-start').addClass('green');
+    timerIsOn = false;
+}
+
+function clearTimer() {
+    stopTimer();
+    seconds = 0;
+    updateTimerDisplay()
+}
 
 function addSecond() {
     seconds += 1;
@@ -15,10 +50,7 @@ function addMinute() {
     updateTimerDisplay()
 }
 
-function clearTimer() {
-    seconds = 0;
-    updateTimerDisplay()
-}
+/* display stuff */
 
 function formatDisplay(seconds) {
     var isNegative = seconds < 0;
@@ -62,32 +94,7 @@ function setBackgroundColor() {
     }
 }
 
-function tick() {
-    seconds = seconds - 1;
-}
-function timedCount() {
-    tick();
-    updateTimerDisplay();
-    t = setTimeout(function() { timedCount(); },1000);
-}
-
-function stopTimer() {
-    $('#btn-start').html('Start');
-    $('#btn-start').removeClass('red');
-    $('#btn-start').addClass('green');
-    timerIsOn = false;
-}
-
-function startTimer() {
-    $('#btn-start').html('Stop');
-    $('#btn-start').removeClass('green');
-    $('#btn-start').addClass('red');
-    timerIsOn = true;
-    timedCount();
-}
-
-function doTimer() {
-    clearTimeout(t);
+function startStop() {
     if (!timerIsOn) {
         startTimer();
     } else {
@@ -96,9 +103,11 @@ function doTimer() {
     setBackgroundColor();
 }
 
+/* actually do stuff */
+
 $(document).ready(function() {
     updateTimerDisplay();
-    $('#btn-start').click(doTimer);
+    $('#btn-start').click(startStop);
     $('#btn-clear').click(clearTimer);
     $('#btn-minute').click(addMinute);
     $('#btn-second').click(addSecond);});
