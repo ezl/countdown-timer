@@ -2,46 +2,80 @@
 (function() {
 
 var t,
-	currentMin,
-	currentSec,
-	timer_is_on = 0,
-	minutes = 89,
+	timer_is_on = false,
 	seconds = 60;
 
-function timedCount() {
-	seconds = seconds - 1;
-	var outStr = minutes + ":" + seconds;
-	if (seconds <= 9) {
-		outStr = minutes + ":" + "0" + seconds;
+function addSecond() {
+	seconds += 1;
+	updateTimerDisplay()
+}
+
+function addMinute() {
+	seconds += 60;
+	updateTimerDisplay()
+}
+
+function clearTimer() {
+	seconds = 0;
+	updateTimerDisplay()
+}
+
+function formatDisplay(seconds) {
+	var isNegative = seconds < 0;
+	var magnitude = Math.abs(seconds);
+	var displayMinutes = parseInt(magnitude / 60);
+	var displaySeconds = magnitude % 60;
+	if (displaySeconds < 10) {
+		displaySeconds = "0" + displaySeconds;
 	}
+	var sign = isNegative ? "-" : "";
+	return sign + displayMinutes + ":" + displaySeconds;
+}
+
+function updateTimerDisplay() {
+	/* set the outstring */ 
+	var outStr = formatDisplay(seconds);
 	$('#countdown').html(outStr);
-	$('#elapsedMin').val(minutes);
-	$('#elapsedSec').val(seconds);
-	if (seconds === 0) {
-		seconds = 60;
-		minutes = minutes - 1;
+	setBackgroundColor();
+}
+
+function setBackgroundColor() {
+	if (seconds < 0) {
+		$('body').addClass('red');
+	} else {
+		$('body').removeClass('red');
 	}
+}
+
+function tick() {
+	seconds = seconds - 1;
+}
+function timedCount() {
+	tick();
+	updateTimerDisplay();
 	t = setTimeout(function() { timedCount(); },1000);
 }
 
 function doTimer() {
-	currentMin = minutes;
-	currentSec = seconds;
 	clearTimeout(t);
 	if (!timer_is_on) {
-		$('#btn-start').html('Pause Test');
-		timer_is_on = 1;
+		$('#btn-start').html('Stop');
+		$('#btn-start').removeClass('start');
+		$('#btn-start').addClass('stop');
+		timer_is_on = true;
 		timedCount();
 	} else {
-		$('#btn-start').html('Start Test');
-		var totalTime = currentMin + ":" + currentSec;
-		$('#countdown').html(totalTime);
-		timer_is_on = 0;
+		$('#btn-start').html('Start');
+		$('#btn-start').removeClass('stop');
+		$('#btn-start').addClass('start');
+		timer_is_on = false;
 	}
 }
 
 $(document).ready(function() {
+	updateTimerDisplay();
 	$('#btn-start').click(doTimer);
-});
-
+	$('#btn-clear').click(clearTimer);
+	$('#btn-minute').click(addMinute);
+	$('#btn-second').click(addSecond);});
 })();

@@ -1,35 +1,28 @@
-#countdown-wrapper {
-	float: left;
+body {
 	padding: 20px;
-	background: #333;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	-khtml-border-radius: 10px;
-	border-radius: 10px;
-	-moz-box-shadow: 0px 0px 4px #666;
-	-webkit-box-shadow: 0px 0px 4px #666;
-	-khtml-box-shadow: 0px 0px 4px #666;
-	box-shadow: 0px 0px 4px #666;
+	background-color: #333;
 	font-family: arial, sans-serif;
 }
 
+body.red {
+	background-color: red;
+}
+
 #countdown {
-	font-size: 54px;
+	font-size: 120px;
 	text-align: center;
-	width: 210px;
-	float: right;
-	padding: 0 0 30px;
+	padding: 30px;
+	margin-top: 50px;
 	color: #fff;
 }
 
-.btn-start {
-	float: right;
-	clear: right;
-	display: block;
+#buttons {
+	text-align: center;
+}
+
+.btn {
 	width: 200px;
-	padding: 10px 0;
-	background: green;
-	color: #fff;
+	padding: 5px 20px;
 	font-size: 24px;
 	text-align: center;
 	text-shadow: -1px -1px #333;
@@ -37,7 +30,7 @@
 	-webkit-border-radius: 6px;
 	-khtml-border-radius: 6px;
 	border-radius: 6px;
-	border: 4px solid #fff;
+	border: 2px solid #fff;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	-moz-box-shadow: 0px 0px 2px #000;
@@ -46,4 +39,19 @@
 	box-shadow: 0px 0px 2px #000;
 	cursor: pointer;
 	text-decoration: none;
+	margin: 5px;
+	color: #fff;
+}
+.btn.start {
+	background: green;
+}
+.btn.stop {
+	background: red;
+}
+
+.btn.time {
+	background: blue;
+}
+.btn.clear {
+	background: #333;
 }
