@@ -71,19 +71,27 @@ function timedCount() {
     t = setTimeout(function() { timedCount(); },1000);
 }
 
+function stopTimer() {
+    $('#btn-start').html('Start');
+    $('#btn-start').removeClass('red');
+    $('#btn-start').addClass('green');
+    timerIsOn = false;
+}
+
+function startTimer() {
+    $('#btn-start').html('Stop');
+    $('#btn-start').removeClass('green');
+    $('#btn-start').addClass('red');
+    timerIsOn = true;
+    timedCount();
+}
+
 function doTimer() {
     clearTimeout(t);
     if (!timerIsOn) {
-        $('#btn-start').html('Stop');
-        $('#btn-start').removeClass('green');
-        $('#btn-start').addClass('red');
-        timerIsOn = true;
-        timedCount();
+        startTimer();
     } else {
-        $('#btn-start').html('Start');
-        $('#btn-start').removeClass('red');
-        $('#btn-start').addClass('green');
-        timerIsOn = false;
+        stopTimer();
     }
     setBackgroundColor();
 }
